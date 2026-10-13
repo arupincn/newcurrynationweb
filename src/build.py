@@ -584,8 +584,8 @@ po += f'''<section><div class="wrap"><div class="phases">
  "Demand Atlas with 3–5 unclaimed reasons to choose you, and one recommended","Know who pays more and why, and which position is open","Your choice of position to build on",
  list(zip(L3,["value chain and margin map","8–12 buyer interviews and a lost-deal review","occasion and time-of-day map"])), a="bell")}
 {phase("c-green","2","Define","2 weeks","Who are we for, what do we stand for, and why should anyone believe us?",[
- "Pick the target buyer and the need we serve","Define your role in the buyer’s world and the gap between you and rivals","Build the proof ladder: what you can show, certify or trace that others cannot","Write the brand heart: belief, promise, personality","Test the platform against your product, pricing and sales reality"],
- "One-page Brand Platform: target, positioning, proof, brand heart","Give one clear answer to “why you?” that your team, sales and partners can all repeat","Approved positioning",
+ "Pick the target buyer and the need we serve","Define your role in the buyer’s world and the gap between you and rivals","Build the proof ladder: what you can show, certify or trace that others cannot","Write the Brand Key: belief, promise, personality","Test the platform against your product, pricing and sales reality"],
+ "One-page Brand Platform: target, positioning, proof, Brand Key","Give one clear answer to “why you?” that your team, sales and partners can all repeat","Approved positioning",
  list(zip(L3,["proof and certification claims","benefit ladder from feature to business outcome","emotional benefit ladder"])), a="chai")}
 {phase("c-purple","3","Express","2 weeks","How do we say it, and what do we do in the first 90 days?",[
  "Turn the platform into an insight and a reason to believe","Develop 2 creative routes with 3–5 lines each","Map what it means for your range, offer and channels","Build the 90-day launch and activation plan with owners and sequence"],
