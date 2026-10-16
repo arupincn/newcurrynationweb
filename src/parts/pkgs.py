@@ -26,7 +26,7 @@ def pkg_section(eyebrow, h, sub, pkgs, head, sid="packages", cls=""):
     return f'''<section class="{cls}" id="{sid}"><div class="wrap">{head(eyebrow, h, sub)}
 {pkg_jump(pkgs)}<div class="pkgs">{cards}</div></div></section>'''
 
-CONTACT = "https://currynation.in/contact-us/"
+CONTACT = "contact.html"
 FV_EMAIL = "challengeus@currynation.in"
 PERF_EMAIL = "nagesshp@currynation.in"
 

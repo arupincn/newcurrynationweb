@@ -4,7 +4,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); PARTS = os.path.join(HERE, 'p
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "site")
 shutil.rmtree(OUT, ignore_errors=True); os.makedirs(OUT)
-CONTACT = "https://currynation.in/contact-us/"
+CONTACT = "contact.html"
 UP = "https://currynation.in/wp-content/uploads/2025/05/"
 LOGO = "https://currynation.in/wp-content/uploads/2025/04/logo.svg"
 ART = {k: UP + v for k, v in {"chai": "cutting-Chai.png", "bell": "bell.png", "elephant": "Elephant.png",
@@ -217,7 +217,9 @@ CSS += open(PARTS + "/v8.css").read()
 CSS += open(PARTS + "/v10.css").read()
 CSS += open(PARTS + "/v11.css").read()
 CSS += open(PARTS + "/v13.css").read()
+CSS += open(PARTS + "/v14.css").read()
 import sys; sys.path.insert(0, PARTS)
+import company as co
 from pkgs import pkg_section, cmp_section, FOUNDER, C2B, PERF as PERF_PK, DESIGN as DESIGN_PK, LEAD, BRAND, LEAD_PAGE
 from faqs import FAQ, faq_section, faq_schema
 import json as _json
@@ -250,6 +252,10 @@ MENU = [
 ]
 HUB = {"brand": "brand-led.html", "founder": "founder-visibility.html", "performance": "performance.html", "design": "design.html"}
 
+CO_PAGES = [("work.html", "Work"), ("about.html", "About"), ("resources.html", "Free Resources")]
+def CO_LINKS(cur):
+    return "".join(f'<li class="m solo lnk"><a class="mt" href="{h}"{" aria-current=\"page\"" if cur==h else ""}>{t}</a></li>' for h, t in CO_PAGES)
+
 def header(cur):
     items = ""
     for name, key, line, subs in MENU:
@@ -262,7 +268,7 @@ def header(cur):
 <div class="sub"><p class="sub-k">{line}</p>{links}<a class="all" href="index.html#{key}">See all {name} products →</a></div></li>"""
     return f"""<header class="top" id="top"><div class="wrap">
 <a class="logo" href="index.html" aria-label="Curry Nation home"><img src="logo.png" alt="Curry Nation" width="64" height="64"></a>
-<nav class="nav" id="mainnav" aria-label="Products"><ul class="menu"><li class="m solo"><a class="mt" href="index.html"{" aria-current=\"page\"" if cur=="index.html" else ""}>Home</a></li>{items}</ul></nav>
+<nav class="nav" id="mainnav" aria-label="Products"><ul class="menu"><li class="m solo"><a class="mt" href="index.html"{" aria-current=\"page\"" if cur=="index.html" else ""}>Home</a></li>{items}{CO_LINKS(cur)}</ul></nav>
 <a class="btn cta-top" href="{CONTACT}">Let’s Connect</a>
 <button class="burger" type="button" aria-controls="mainnav" aria-expanded="false"><span></span>Menu</button>
 </div></header>"""
@@ -282,7 +288,7 @@ if(r&&!calm){var w=r.getAttribute('data-rotate').split('|'),i=0;setInterval(func
 document.querySelectorAll('.vplay').forEach(function(b){b.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.getAttribute('data-yt')+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title='Client testimonial';b.replaceWith(f)})});
 })();</script>'''
 
-FOOT = f'<footer class="foot"><div class="wrap"><span>© 2026 Curry Nation Brand Conversations</span><span><a href="https://currynation.in/">currynation.in</a> · <a href="{CONTACT}">Let’s talk. Work with us</a></span></div></footer>'
+FOOT = f'''<footer class="foot"><div class="wrap"><nav class="foot-links" aria-label="Footer"><a href="index.html">Home</a><a href="brand-led.html">Brand-led</a><a href="founder-visibility.html">Founder-led</a><a href="performance.html">Performance-led</a><a href="design.html">Design-led</a><a href="work.html">Work</a><a href="about.html">About</a><a href="resources.html">Free Resources</a><a href="contact.html">Contact</a></nav>{co.social_row()}<span>© 2026 Curry Nation Brand Conversations</span></div></footer>'''
 
 MBAR = {
  "index.html": [("Free Brand Audit", "brand-audit.html"), ("Let’s talk", CONTACT)],
@@ -851,6 +857,10 @@ c2 += faq_section(FAQ["brand-led.html"], head, cls="white")
 c2 += related("brand-led.html") + close("Find out where your brand stands.", "Ten minutes, twenty questions, and your score before we ask for anything.", "Take the free Brand Audit", "brand-audit.html")
 
 SPEC = [
+ ("about.html","About Us · Curry Nation","India’s only brand transformation partner focused exclusively on owner-managed commodity businesses: mission, values, team and awards.",co.about_page()),
+ ("work.html","Our Work · Curry Nation","Campaigns and brands built by Curry Nation across commodity, retail, FMCG, food and media.",co.work_page() + co.WORK_JS),
+ ("resources.html","Free Resources · Curry Nation","Free e-books, templates and case studies for owner-managed commodity businesses.",co.resources_page() + co.RES_JS),
+ ("contact.html","Contact Us · Curry Nation","Talk to Curry Nation: Pinnacle Business Park, Andheri (E), Mumbai.",co.contact_page() + co.CONTACT_JS),
  ("brand-led.html","Commodity to Brand · Curry Nation","Brand-led packages: Brand Audit, Brand Positioning, and the Challenger Workshops for Leadership and for Business.",c2),
  ("index.html","Curry Nation · We grow ambitious owner-managed businesses","Growth and outcome-based products: brand-led, founder-led, performance-led and design-led.",hm),
  ("brand-audit.html","Brand Audit · Curry Nation","A free ten-minute audit that shows where your brand stands and what it is costing you.",au),
