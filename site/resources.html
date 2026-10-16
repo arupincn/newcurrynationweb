@@ -37,7 +37,7 @@ h3{font:800 clamp(1.6rem,3vw,2.2rem)/1 var(--f-display)}
 /* header */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--yellow);box-shadow:0 6px 18px -12px rgba(0,0,0,.35)}
 .top .wrap{display:flex;align-items:center;gap:18px;padding-block:12px;flex-wrap:wrap}
-.logo{width:56px;height:56px;border-radius:50%;background:var(--flame) url(https://currynation.in/wp-content/uploads/2025/04/logo.svg) center/cover no-repeat;flex:none;display:grid;place-items:center;font:900 1rem/1 var(--f-display);color:var(--yellow);text-decoration:none;box-shadow:0 0 0 3px var(--slate)}
+.logo{width:56px;height:56px;border-radius:50%;background:var(--flame);flex:none;display:grid;place-items:center;font:900 1rem/1 var(--f-display);color:var(--yellow);text-decoration:none;box-shadow:0 0 0 3px var(--slate)}
 .nav{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:.9rem;margin-right:auto}
 .nav .grp{font:800 .95rem/1 var(--f-display);text-transform:uppercase;letter-spacing:.06em;color:var(--maroon)}
 .nav a{text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
@@ -809,7 +809,7 @@ p.sub{display:block;position:static;width:auto;box-shadow:none;background:none;p
 </style>
 <link rel="icon" href="assets/favicon-48.png" sizes="48x48"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><meta name="theme-color" content="#ffcb21">
 <meta property="og:title" content="Free Resources · Curry Nation"><meta property="og:description" content="Free e-books, templates and case studies for owner-managed commodity businesses."><meta property="og:type" content="website"><meta property="og:image" content="assets/team.jpg"><meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Curry Nation Brand Conversations", "url": "https://currynation.in/", "logo": "https://currynation.in/wp-content/uploads/2025/04/logo.svg", "address": {"@type": "PostalAddress", "addressLocality": "Mumbai", "addressCountry": "IN"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Curry Nation Brand Conversations", "url": "https://currynation.in/", "logo": "https://currynation.in/logo.png", "address": {"@type": "PostalAddress", "addressLocality": "Mumbai", "addressCountry": "IN"}}</script>
 </head><body>
 <div class="page"><header class="top" id="top"><div class="wrap">
 <a class="logo" href="index.html" aria-label="Curry Nation home"><img src="logo.png" alt="Curry Nation" width="64" height="64"></a>
@@ -858,4 +858,36 @@ var r=document.querySelector('[data-rotate]');
 if(r&&!calm){var w=r.getAttribute('data-rotate').split('|'),i=0;setInterval(function(){r.classList.add('out');setTimeout(function(){i=(i+1)%w.length;r.textContent=w[i];r.classList.remove('out')},280)},2300)}
 document.querySelectorAll('.vplay').forEach(function(b){b.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.getAttribute('data-yt')+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title='Client testimonial';b.replaceWith(f)})});
 })();</script>
+<script>
+/* Image safety net: old WordPress uploads may not exist on the new static hosting. */
+(function () {
+  function svgCover(label, kind) {
+    var safe = String(label || 'Curry Nation').replace(/[&<>"']/g, function (c) {
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    }).slice(0, 76);
+    var isResource = kind === 'resource';
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">' +
+      '<rect width="800" height="500" fill="#ffcb21"/>' +
+      '<path d="M0 0H800V26H0ZM0 474H800V500H0Z" fill="#2a62ad"/>' +
+      '<circle cx="700" cy="90" r="105" fill="#f15922"/>' +
+      '<circle cx="700" cy="90" r="72" fill="#ffcb21"/>' +
+      '<text x="48" y="100" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#232323">CURRY NATION</text>' +
+      '<text x="48" y="' + (isResource ? '220' : '250') + '" font-family="Arial,sans-serif" font-size="' + (safe.length > 38 ? '27' : '36') + '" font-weight="700" fill="#761817">' + safe + '</text>' +
+      '<text x="48" y="430" font-family="Arial,sans-serif" font-size="18" fill="#232323">Practical tools for brand builders</text>' +
+      '</svg>';
+    return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+  }
+  document.querySelectorAll('img').forEach(function (img) {
+    img.addEventListener('error', function () {
+      if (img.dataset.fallbackApplied) return;
+      img.dataset.fallbackApplied = '1';
+      var card = img.closest('.rs');
+      var label = card ? (card.getAttribute('data-t') || card.querySelector('b')?.textContent) : (img.alt || 'Curry Nation');
+      img.src = svgCover(label, card ? 'resource' : 'general');
+      img.alt = label || 'Curry Nation graphic';
+      img.classList.add('image-fallback');
+    });
+  });
+})();
+</script>
 </body></html>
