@@ -791,6 +791,21 @@ p.sub{display:block;position:static;width:auto;box-shadow:none;background:none;p
 .big-head h2{font-size:clamp(3rem,8vw,5.6rem)!important}
 .corner h2.corner-h{font-family:var(--f-body)!important;font-weight:600!important;line-height:1.3!important}
 .dl h2,.ct-h,.press-h,.areare h2{line-height:1.2!important}
+
+/* ---------- v15: desktop nav — even spacing, no hover box, sliding underline ---------- */
+@media (min-width:1101px){
+  .menu{gap:26px}
+  .m{gap:5px}
+  .m>.mt,.m.solo>.mt,.m.lnk>.mt{padding:10px 0;background:none!important;border:0;border-radius:0;box-shadow:none;position:relative}
+  .mx,.mx:hover,.m.open>.mx{width:auto;height:auto;padding:4px 0;margin:0;background:none!important;border-radius:0}
+  .m>.mt::after,.m.solo>.mt::after{content:"";display:block;position:absolute;left:0;right:0;bottom:3px;height:2px;border:0;border-radius:2px;background:var(--flame);
+    transform:scaleX(0);transform-origin:left center;transition:transform .28s cubic-bezier(.2,.7,.2,1)}
+  .m:hover>.mt::after,.m.open>.mt::after,.m>.mt:focus-visible::after{transform:scaleX(1)}
+  .menu .m.here>.mt::after,.menu .m>.mt[aria-current]::after{transform:scaleX(1)}
+  .m:hover>.mt,.m.open>.mt{color:var(--maroon)}
+}
+@media (min-width:1101px) and (max-width:1240px){.menu{gap:18px}}
+@media (prefers-reduced-motion:reduce){.m>.mt::after{transition:none}}
 </style>
 <link rel="icon" href="assets/favicon-48.png" sizes="48x48"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><meta name="theme-color" content="#ffcb21">
 <meta property="og:title" content="About Us · Curry Nation"><meta property="og:description" content="India’s only brand transformation partner focused exclusively on owner-managed commodity businesses: mission, values, team and awards."><meta property="og:type" content="website"><meta property="og:image" content="assets/team.jpg"><meta name="twitter:card" content="summary_large_image">

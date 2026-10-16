@@ -218,6 +218,7 @@ CSS += open(PARTS + "/v10.css").read()
 CSS += open(PARTS + "/v11.css").read()
 CSS += open(PARTS + "/v13.css").read()
 CSS += open(PARTS + "/v14.css").read()
+CSS += open(PARTS + "/v15.css").read()
 import sys; sys.path.insert(0, PARTS)
 import company as co
 from pkgs import pkg_section, cmp_section, FOUNDER, C2B, PERF as PERF_PK, DESIGN as DESIGN_PK, LEAD, BRAND, LEAD_PAGE
